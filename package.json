@@ -1,0 +1,29 @@
+{
+  "name": "vesting-contracts",
+  "version": "1.0.0",
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "main": "truffle-config.js",
+  "scripts": {
+    "compile": "truffle compile",
+    "migrate": "truffle migrate",
+    "test": "truffle test --network development",
+    "ganache": "ganache-cli"
+  },
+  "author": "Byzantine Lab",
+  "license": "ISC",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.0.18",
+    "openzeppelin-solidity": "2.1.3",
+    "truffle-hdwallet-provider": "^1.0.11"
+  },
+  "devDependencies": {
+    "ganache-cli": "^6.2.5",
+    "openzeppelin-test-helpers": "^0.2.0",
+    "truffle": "^5.0.12",
+    "truffle-assertions": "^0.9.1",
+    "web3-utils": "^1.2.1"
+  }
+}
