@@ -54,6 +54,15 @@ module.exports = {
       network_id: '374',
       gasPrice: toWei('1', 'gwei'),
     },
+    mainnet: {
+      provider: () =>
+        new HDWalletProvider(
+          privateKey,
+          'https://mainnet-rpc.tangerine-network.io',
+        ),
+      network_id: '411',
+      gasPrice: toWei('1', 'gwei'),
+    },
   },
 
   // Set default mocha options here, use special reporters etc.
