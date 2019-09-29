@@ -10,12 +10,12 @@ module.exports = async (deployer, network) => {
 
   for (const config of configs) {
     const {owner, address} = config;
-    let staker = await NodeStaker.new();
+    let staker = await NodeStaker.new(false);
 
     if (gov) {
       console.log('Network is development, use mock governance: ', gov.address);
       minStake = new web3.utils.BN(web3.utils.toWei('1', 'ether'));
-      let staker = await NodeStakerMock.new();
+      let staker = await NodeStakerMock.new(false);
       staker.setGovernance(gov.address);
     }
 
