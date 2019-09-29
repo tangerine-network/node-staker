@@ -33,6 +33,7 @@ contract NodeStaker is Ownable, FoundationOwnable {
   event NodePublicKeyReplaced(bytes oldKey, bytes newKey);
   event UnstakedByFoundation(uint256 amount);
   event OwnershipTranferedByFoundation(address from, address to);
+  event NodeInfoUpdated(string Name, string Email, string Location, string Url);
 
   // ---------
   // Modifiers
@@ -49,6 +50,8 @@ contract NodeStaker is Ownable, FoundationOwnable {
   function () external payable {
     emit NodeDeposited(msg.sender, msg.value);
   }
+
+  constructor(bool _registered) public { registered = _registered; }
 
   // -------------------
   // Getters and Setters
@@ -107,6 +110,15 @@ contract NodeStaker is Ownable, FoundationOwnable {
     (,oldKey,,,,,,,,) = gov.nodes(offset);
     gov.replaceNodePublicKey(key);
     emit NodePublicKeyReplaced(oldKey, key);
+  }
+
+  /**
+    * @dev update node info
+    */
+  function updateNodeInfo(string memory Name, string memory Email,
+                          string memory Location, string memory Url) public onlyOwner onlyRegistered {
+    gov.updateNodeInfo(Name, Email, Location, Url);
+    emit NodeInfoUpdated(Name, Email, Location, Url);
   }
 
   // -------------------------

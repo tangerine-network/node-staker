@@ -17,7 +17,7 @@ contract('NodeStaker', accounts => {
 
   const deploy = async () => {
     govMock = await GovernanceMock.new();
-    nodeStaker = await NodeStaker.new();
+    nodeStaker = await NodeStaker.new(false);
     await nodeStaker.setGovernance(govMock.address);
     nodeStaker.sendTransaction({value: minStake});
     nodeStaker.transferOwnership(owner);
